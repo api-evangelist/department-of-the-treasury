@@ -5,8 +5,7 @@ url: >2-
 apis:
   - aid: department-of-the-treasury:department-of-the-treasury
     name: Department of the Treasury
-    tags:
-      - API
+    tags: []
     humanURL: https://fiscaldata.treasury.gov/api-documentation
     properties:
       - url: https://fiscaldata.treasury.gov/api-documentation
