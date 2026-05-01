@@ -1,0 +1,54 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "treas": "https://api-evangelist.com/department-of-the-treasury/vocab/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "DebtRecord": {
+      "@id": "treas:DebtRecord",
+      "@context": {
+        "record_date": { "@id": "dcterms:date", "@type": "xsd:date" },
+        "tot_pub_debt_out_amt": { "@id": "treas:totalPublicDebtOutstanding", "@type": "xsd:decimal" },
+        "debt_held_public_amt": { "@id": "treas:debtHeldByPublic", "@type": "xsd:decimal" },
+        "intragov_hold_amt": { "@id": "treas:intragovernmentalHoldings", "@type": "xsd:decimal" }
+      }
+    },
+    "OperatingCashBalance": {
+      "@id": "treas:OperatingCashBalance",
+      "@context": {
+        "record_date": { "@id": "dcterms:date", "@type": "xsd:date" },
+        "open_today_bal": { "@id": "treas:openingBalance", "@type": "xsd:decimal" },
+        "close_today_bal": { "@id": "treas:closingBalance", "@type": "xsd:decimal" },
+        "account_type": "treas:accountType"
+      }
+    },
+    "ExchangeRate": {
+      "@id": "treas:ExchangeRate",
+      "@context": {
+        "record_date": { "@id": "dcterms:date", "@type": "xsd:date" },
+        "country_currency_desc": "treas:currency",
+        "exchange_rate": { "@id": "treas:rate", "@type": "xsd:decimal" }
+      }
+    },
+    "SanctionedEntity": {
+      "@id": "treas:SanctionedEntity",
+      "@context": {
+        "uid": "schema:identifier",
+        "name": "schema:name",
+        "type": "treas:entityType",
+        "programs": "treas:sanctionsProgram",
+        "nationalities": "schema:nationality",
+        "sanctionsListType": "treas:sanctionsListType"
+      }
+    },
+    "SanctionsProgram": {
+      "@id": "treas:SanctionsProgram",
+      "@context": {
+        "code": "schema:identifier",
+        "description": "schema:description"
+      }
+    }
+  }
+}

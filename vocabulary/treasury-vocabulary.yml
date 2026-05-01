@@ -1,0 +1,51 @@
+name: Department of the Treasury Vocabulary
+description: >-
+  Controlled vocabulary covering the federal-finance datasets exposed by
+  Treasury's Fiscal Data API and the sanctions data published by the Office
+  of Foreign Assets Control (OFAC).
+namespace: https://api-evangelist.com/department-of-the-treasury/vocab/
+prefix: treas
+terms:
+  - term: DebtRecord
+    type: Class
+    definition: A daily observation of the U.S. total public debt outstanding.
+  - term: TotalPublicDebtOutstanding
+    type: Property
+    definition: The sum of debt held by the public and intragovernmental holdings, in U.S. dollars.
+  - term: DebtHeldByPublic
+    type: Property
+    definition: Marketable and non-marketable Treasury securities held by entities outside the U.S. government.
+  - term: IntragovernmentalHoldings
+    type: Property
+    definition: Treasury securities held by U.S. government trust funds and accounts.
+  - term: OperatingCashBalance
+    type: Class
+    definition: Daily Treasury operating cash balance reported in the Daily Treasury Statement.
+  - term: MonthlyTreasuryStatement
+    type: Class
+    definition: Receipts, outlays, and surplus or deficit of the U.S. government, reported monthly.
+  - term: TreasuryAuction
+    type: Class
+    definition: A scheduled sale of marketable Treasury securities (bills, notes, bonds, FRNs, TIPS).
+  - term: ExchangeRate
+    type: Class
+    definition: Treasury reporting rate of exchange for converting foreign currency amounts to U.S. dollars.
+  - term: AverageInterestRate
+    type: Class
+    definition: Average interest rate paid on outstanding marketable and non-marketable Treasury securities.
+  - term: SanctionedEntity
+    type: Class
+    definition: An individual, entity, vessel, or aircraft designated under an OFAC sanctions program.
+  - term: SanctionsProgram
+    type: Class
+    definition: A named OFAC sanctions program (e.g. SDGT, IRAN, UKRAINE-EO13662).
+  - term: SDN
+    type: Class
+    definition: Specially Designated National - person blocked under one or more OFAC programs.
+    subClassOf: SanctionedEntity
+  - term: ConsolidatedSanctionsList
+    type: Class
+    definition: OFAC's combined non-SDN sanctions list of restricted persons and entities.
+  - term: Currency
+    type: Property
+    definition: Country and currency descriptor used in Treasury reporting (e.g. CANADA-DOLLAR).

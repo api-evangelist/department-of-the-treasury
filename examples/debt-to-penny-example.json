@@ -1,0 +1,32 @@
+{
+  "data": [
+    {
+      "record_date": "2026-04-25",
+      "debt_held_public_amt": "29014872349812.10",
+      "intragov_hold_amt": "7124398721934.55",
+      "tot_pub_debt_out_amt": "36139271071746.65",
+      "src_line_nbr": "1",
+      "record_fiscal_year": "2026",
+      "record_fiscal_quarter": "3",
+      "record_calendar_year": "2026",
+      "record_calendar_quarter": "2",
+      "record_calendar_month": "04",
+      "record_calendar_day": "25"
+    }
+  ],
+  "meta": {
+    "count": 1,
+    "labels": {
+      "record_date": "Record Date",
+      "tot_pub_debt_out_amt": "Total Public Debt Outstanding"
+    },
+    "total-count": 7300,
+    "total-pages": 73
+  },
+  "links": {
+    "self": "&page%5Bnumber%5D=1&page%5Bsize%5D=100",
+    "first": "&page%5Bnumber%5D=1&page%5Bsize%5D=100",
+    "next": "&page%5Bnumber%5D=2&page%5Bsize%5D=100",
+    "last": "&page%5Bnumber%5D=73&page%5Bsize%5D=100"
+  }
+}

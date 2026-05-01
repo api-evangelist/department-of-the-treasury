@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/department-of-the-treasury/schemas/sanctioned-entity.json",
+  "title": "Sanctioned Entity",
+  "description": "An individual, entity, vessel, or aircraft listed on an OFAC sanctions list.",
+  "type": "object",
+  "required": ["uid", "name", "type"],
+  "properties": {
+    "uid": { "type": "string" },
+    "name": { "type": "string" },
+    "type": { "type": "string", "enum": ["Individual", "Entity", "Aircraft", "Vessel"] },
+    "programs": { "type": "array", "items": { "type": "string" } },
+    "sanctionsListType": { "type": "string", "enum": ["SDN", "Consolidated"] },
+    "akas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "category": { "type": "string" },
+          "type": { "type": "string" },
+          "firstName": { "type": ["string", "null"] },
+          "lastName": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "addresses": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "address1": { "type": ["string", "null"] },
+          "city": { "type": ["string", "null"] },
+          "stateOrProvince": { "type": ["string", "null"] },
+          "postalCode": { "type": ["string", "null"] },
+          "country": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "ids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": { "type": "string" },
+          "number": { "type": "string" },
+          "country": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "nationalities": { "type": "array", "items": { "type": "string" } }
+  }
+}

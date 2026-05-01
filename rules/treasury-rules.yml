@@ -1,0 +1,29 @@
+name: Department of the Treasury API Rules
+description: >-
+  Rules and constraints governing access to Treasury's public APIs (Fiscal
+  Data, OFAC Sanctions List Service, SAM.gov via api.data.gov).
+rules:
+  - id: public-data-license
+    description: Datasets exposed via the Fiscal Data API are U.S. government works in the public domain; attribution to "U.S. Department of the Treasury, Bureau of the Fiscal Service" is recommended but not required.
+    appliesTo: ["fiscal-data-api"]
+    severity: should
+  - id: pagination-required-for-large-results
+    description: Fiscal Data datasets must be paged with page[number] and page[size]; consumers must follow the next link in the response when present.
+    appliesTo: ["fiscal-data-api"]
+    severity: must
+  - id: filter-syntax
+    description: Filter expressions follow the field:operator:value syntax (e.g. record_date:gte:2025-01-01); operators include eq, lt, lte, gt, gte, in.
+    appliesTo: ["fiscal-data-api"]
+    severity: must
+  - id: ofac-list-refresh
+    description: OFAC sanctions data must be refreshed at least daily; cached results older than 24 hours must not be used for compliance screening.
+    appliesTo: ["ofac-sdn-api"]
+    severity: must
+  - id: ofac-fuzzy-matching
+    description: Sanctions screening must include phonetic and aliasing variations (akas) and apply a documented minimum match score before action.
+    appliesTo: ["ofac-sdn-api"]
+    severity: should
+  - id: rate-limit-cache
+    description: Public consumers should cache responses where data does not change daily and respect documented rate limits (api.data.gov keys for SAM data).
+    appliesTo: ["*"]
+    severity: should

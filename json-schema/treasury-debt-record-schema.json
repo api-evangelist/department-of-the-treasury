@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.com/department-of-the-treasury/schemas/debt-to-the-penny.json",
+  "title": "Debt to the Penny Record",
+  "description": "A single daily observation from the Debt to the Penny dataset.",
+  "type": "object",
+  "required": ["record_date", "tot_pub_debt_out_amt"],
+  "properties": {
+    "record_date": { "type": "string", "format": "date" },
+    "debt_held_public_amt": { "type": "string", "description": "Debt held by the public, in U.S. dollars (string-encoded decimal)." },
+    "intragov_hold_amt": { "type": "string", "description": "Intragovernmental holdings, in U.S. dollars." },
+    "tot_pub_debt_out_amt": { "type": "string", "description": "Total public debt outstanding, in U.S. dollars." },
+    "src_line_nbr": { "type": ["string", "integer"] },
+    "record_fiscal_year": { "type": "string", "pattern": "^[0-9]{4}$" },
+    "record_fiscal_quarter": { "type": "string" },
+    "record_calendar_year": { "type": "string", "pattern": "^[0-9]{4}$" },
+    "record_calendar_quarter": { "type": "string" },
+    "record_calendar_month": { "type": "string" },
+    "record_calendar_day": { "type": "string" }
+  }
+}

@@ -1,0 +1,41 @@
+name: Department of the Treasury API Capabilities
+description: >-
+  High-level capabilities exposed by Treasury's Fiscal Data API, OFAC
+  Sanctions List Service, and other Treasury bureaus.
+capabilities:
+  - id: federal-finance-datasets
+    name: Federal Finance Open Data
+    description: Read standardized federal-finance datasets covering debt, revenue, spending, interest rates, exchange rates, and Treasury auctions.
+    apis:
+      - fiscal-data-api
+    auth: None (public)
+  - id: debt-tracking
+    name: Track U.S. Public Debt
+    description: Retrieve daily Debt to the Penny records and Monthly Statement of the Public Debt (MSPD).
+    apis:
+      - fiscal-data-api
+    auth: None (public)
+  - id: treasury-operations
+    name: Daily and Monthly Treasury Statements
+    description: Access the Daily Treasury Statement (operating cash balance, deposits, withdrawals) and Monthly Treasury Statement.
+    apis:
+      - fiscal-data-api
+    auth: None (public)
+  - id: exchange-rates
+    name: Treasury Reporting Rates of Exchange
+    description: Retrieve quarterly Treasury reporting rates of exchange used for federal reporting in U.S. dollars.
+    apis:
+      - fiscal-data-api
+    auth: None (public)
+  - id: sanctions-screening
+    name: OFAC Sanctions Screening
+    description: Download the SDN and Consolidated sanctions lists and run structured search against them.
+    apis:
+      - ofac-sdn-api
+    auth: None (public)
+  - id: federal-procurement
+    name: Federal Procurement and Awards (SAM.gov)
+    description: Browse entity registration, exclusions, and federal-assistance opportunities published via SAM.gov.
+    apis:
+      - sam-entity-management-api
+    auth: API key (api.data.gov)

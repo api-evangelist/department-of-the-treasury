@@ -1,0 +1,21 @@
+{
+  "uid": "31000",
+  "name": "EXAMPLE SANCTIONED ENTITY LTD.",
+  "type": "Entity",
+  "sanctionsListType": "SDN",
+  "programs": ["SDGT", "IFSR"],
+  "akas": [
+    { "category": "strong", "type": "aka", "firstName": null, "lastName": "EXAMPLE TRADING CO." }
+  ],
+  "addresses": [
+    {
+      "address1": "1 Example Way",
+      "city": "Example City",
+      "country": "Country X"
+    }
+  ],
+  "ids": [
+    { "type": "Tax ID No.", "number": "000000000", "country": "Country X" }
+  ],
+  "nationalities": ["Country X"]
+}
