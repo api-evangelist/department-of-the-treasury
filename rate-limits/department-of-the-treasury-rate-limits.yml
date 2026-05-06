@@ -4,105 +4,72 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Department of the Treasury
 providerId: department-of-the-treasury
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
   - Federal Government
   - Finance
-  - Debt
   - Sanctions
+  - Open Data
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Department of the Treasury API surface. Captures
-  per-tier quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values
-  to be replaced with published provider limits.
+description: Treasury APIs split into two regimes. Fiscal Data and SAM.gov Entity Management are fronted
+  by api.data.gov, which enforces a default 1,000-requests-per-hour limit per developer key (raisable
+  via support). OFAC's Sanctions List Service and TreasuryDirect open feeds are unauthenticated and bounded
+  by fair-use rather than per-key quotas. api.data.gov surfaces 429 with X-RateLimit-* headers; OFAC and
+  TreasuryDirect use standard server throttling.
+sources:
+  - https://api.data.gov/docs/
+  - https://fiscaldata.treasury.gov/api-documentation/
+  - https://sanctionslistservice.ofac.treas.gov/
 headers:
   limit: X-RateLimit-Limit
   remaining: X-RateLimit-Remaining
   reset: X-RateLimit-Reset
   retryAfter: Retry-After
-  policy: RateLimit-Policy
 responseCodes:
   throttled: 429
   quotaExceeded: 429
   serviceUnavailable: 503
+  forbidden: 403
 limits:
-  - tier: free
-    name: Free Tier Default
+  - tier: api-data-gov
+    name: api.data.gov default per-key limit
     scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Treasury Fiscal Data API
-      - OFAC Sanctions List Service API
-      - TreasuryDirect Securities API
-      - SAM.gov Entity Management API
-      - IRS Public APIs
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
+    metric: requests_per_hour
     limit: 1000
-    timeFrame: month
+    timeFrame: hour
     applies:
       - Treasury Fiscal Data API
-      - OFAC Sanctions List Service API
-      - TreasuryDirect Securities API
       - SAM.gov Entity Management API
-      - IRS Public APIs
-  - tier: professional
-    name: Professional Tier Default
+  - tier: api-data-gov
+    name: api.data.gov increased limit (raise via support)
     scope: api-key
+    metric: requests_per_hour
+    limit: 'higher; request via api.data.gov support'
+    applies:
+      - Treasury Fiscal Data API
+      - SAM.gov Entity Management API
+  - tier: open
+    name: OFAC SLS / TreasuryDirect / IRS Fair-Use Throttle
+    scope: IP
     metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
+    limit: 'fair-use; not published'
     applies:
-      - Treasury Fiscal Data API
       - OFAC Sanctions List Service API
       - TreasuryDirect Securities API
-      - SAM.gov Entity Management API
-      - IRS Public APIs
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Treasury Fiscal Data API
-      - OFAC Sanctions List Service API
-      - TreasuryDirect Securities API
-      - SAM.gov Entity Management API
-      - IRS Public APIs
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Treasury Fiscal Data API
-      - OFAC Sanctions List Service API
-      - TreasuryDirect Securities API
-      - SAM.gov Entity Management API
       - IRS Public APIs
 policies:
+  - name: api.data.gov Key Pattern
+    description: Fiscal Data and SAM.gov enforce limits at the api.data.gov gateway; excess returns 429.
+      Increases must be requested via api.data.gov support.
+  - name: OFAC SLS Bulk Pattern
+    description: OFAC publishes daily refreshed lists; consumers should download once per day rather than
+      poll. Fair-use limits apply at the network edge.
   - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+    description: On 429 / 503 implement exponential backoff with jitter, honoring Retry-After when present.
+  - name: Caching Encouragement
+    description: Fiscal Data datasets are stable on a daily-or-weekly cadence; cache results aggressively
+      to reduce gateway load.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

@@ -8,32 +8,42 @@ alignedWith:
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 provider: Department of the Treasury
 providerId: department-of-the-treasury
-publisherName: Department of the Treasury
-serviceCategory: API
+publisherName: U.S. Department of the Treasury
+serviceCategory: Federal Government / Public Open Data
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
   - Federal Government
   - Finance
-  - Debt
   - Sanctions
+  - Open Data
   - FinOps
-  - Cost Management
   - FOCUS
-description: FinOps framework definition for the Department of the Treasury API surface. Provides a FOCUS-aligned
-  mapping for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
+description: 'FOCUS-aligned FinOps for Department of the Treasury public APIs: zero-cost public data services,
+  funded through congressional appropriations rather than per-call billing. FinOps practice for consumers
+  centers on operational cost (egress, caching, downstream storage, sanctions-screening compute) rather
+  than provider invoice cost.'
+sources:
+  - https://fiscaldata.treasury.gov/api-documentation/
+  - https://sanctionslistservice.ofac.treas.gov/
+  - https://api.data.gov/
 principles:
   - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
+    description: Track consumer-side request volume against api.data.gov developer-account dashboards
+      for keyed APIs (Fiscal Data, SAM.gov); for OFAC SLS, monitor download cadence and digest verification
+      via the consumer-side ingest pipeline.
   - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
+    description: Allocate consumer-side cost (egress, downstream storage, sanctions screening compute)
+      to the consuming workload (compliance, treasury operations, research). There are no provider charges
+      to allocate.
   - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
+    description: Cache Fiscal Data results at the consumer side, batch sanctions-list downloads to the
+      OFAC publication cadence rather than polling, and ensure SAM.gov queries use targeted filters to
+      avoid scanning the full entity dataset.
   - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
+    description: Compliance owns OFAC sanctions-list ingest, treasury operations owns Fiscal Data feeds,
+      and procurement owns SAM.gov consumption; each team monitors its own consumer-side cost.
 domains:
   - name: Understand Usage and Cost
     capabilities:
@@ -45,71 +55,57 @@ domains:
     capabilities:
       - Planning and Estimating
       - Forecasting
-      - Budgeting
       - Benchmarking
       - Unit Economics
   - name: Optimize Usage and Cost
     capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
       - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
+      - Rate Optimization
+      - Architecting for Cloud
   - name: Manage the FinOps Practice
     capabilities:
-      - FinOps Practice Operations
       - FinOps Education and Enablement
-      - Invoicing and Chargeback
       - Onboarding Workloads
-      - Intersecting Disciplines
 billingModel:
-  pricingCategory: Usage-Based
-  billingFrequency: Monthly
+  pricingCategory: Free / Public Data
+  billingFrequency: N/A
   billingCurrency: USD
   chargeCategories:
     - Usage
-    - Purchase
-    - Tax
-    - Credit
-    - Adjustment
-  chargeFrequency: Recurring
+  chargeFrequency: N/A
 focusColumns:
-  ServiceName: Department of the Treasury
-  ServiceCategory: Developer Tools / API
-  ProviderName: Department of the Treasury
-  PublisherName: Department of the Treasury
-  InvoiceIssuerName: Department of the Treasury
-  PricingCategory: Usage-Based
+  ServiceName: Treasury Public APIs
+  ServiceCategory: Federal Government / Public Open Data
+  ProviderName: U.S. Department of the Treasury
+  PublisherName: U.S. Department of the Treasury
+  InvoiceIssuerName: N/A (no invoice issued)
+  PricingCategory: Free
   PricingUnit: request
   BillingCurrency: USD
   ChargeCategory: Usage
 meters:
   - name: api_requests
-    description: Count of billable API requests
+    description: Public API requests (consumer-side count)
     unit: request
     aggregation: sum
     dimensions:
       - api
       - endpoint
-      - tier
-      - region
+      - bureau
       - consumer
   - name: data_egress
-    description: Bytes returned over the network in API responses
+    description: Bytes downloaded from Treasury endpoints (consumer-side metric)
     unit: GB
     aggregation: sum
     dimensions:
       - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
+      - bureau
+  - name: sanctions_screenings
+    description: Number of records screened against the OFAC Sanctions List
+    unit: record
     aggregation: sum
     dimensions:
-      - api
-      - endpoint
-      - tier
+      - consumer
 apis:
   - name: Treasury Fiscal Data API
     baseURL: https://api.fiscaldata.treasury.gov/services/api/fiscal_service
@@ -127,32 +123,32 @@ apis:
     serviceName: OFAC Sanctions List Service API
     serviceCategory: API
   - name: TreasuryDirect Securities API
-    baseURL: ''
+    baseURL: https://www.treasurydirect.gov/
     tags:
       - Securities
       - Auctions
     serviceName: TreasuryDirect Securities API
     serviceCategory: API
   - name: SAM.gov Entity Management API
-    baseURL: ''
+    baseURL: https://api.sam.gov/entity-information/v3/entities
     tags:
       - Procurement
       - Awards
     serviceName: SAM.gov Entity Management API
     serviceCategory: API
   - name: IRS Public APIs
-    baseURL: ''
+    baseURL: https://www.irs.gov/
     tags:
       - Tax
       - Charities
     serviceName: IRS Public APIs
     serviceCategory: API
 unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
+  - name: Consumer Cost per 1K Requests
+    metric: consumer_side_cost / (api_requests / 1000)
+    target: trend down via caching
+  - name: Cost per Sanctions Screening
+    metric: screening_compute_cost / sanctions_screenings
     target: TBD
 maintainers:
   - FN: Kin Lane

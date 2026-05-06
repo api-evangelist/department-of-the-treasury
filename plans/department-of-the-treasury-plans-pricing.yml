@@ -4,159 +4,75 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Department of the Treasury
 providerId: department-of-the-treasury
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
   - Federal Government
   - Finance
   - Debt
   - Sanctions
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+  - Open Data
+description: Department of the Treasury public APIs (Fiscal Data, OFAC Sanctions List Service, TreasuryDirect,
+  SAM.gov, IRS public data) are free of charge and operated as public data services. The Fiscal Data
+  API and SAM.gov Entity Management API are gated through api.data.gov developer keys (free, registration
+  required); OFAC's Sanctions List Service is unauthenticated. There is no paid tier, no billing relationship,
+  and no commercial contract for use of these APIs.
+sources:
+  - https://fiscaldata.treasury.gov/api-documentation/
+  - https://sanctionslistservice.ofac.treas.gov/
+  - https://open.gsa.gov/api/entity-api/
+  - https://api.data.gov/
 plans:
-  - id: department-of-the-treasury-free
-    name: Free
+  - id: department-of-the-treasury-public-free
+    name: Public Free
     type: freemium
-    description: Free entry tier for the Department of the Treasury API surface. Intended for evaluation,
-      prototyping, and low-volume integrations. Real limits and pricing must be reconciled with the provider's
-      published plan documentation.
+    description: Free public access. Fiscal Data and SAM.gov Entity APIs use api.data.gov keys (default
+      1,000 requests per hour); OFAC Sanctions List Service is unauthenticated; TreasuryDirect and IRS
+      public datasets are open downloads with fair-use throttling.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
+      - label: api.data.gov Keyed Requests
+        description: Free, requires an api.data.gov key. Default 1,000 requests per hour per key; raise
+          via api.data.gov support.
+        name: keyed_requests
         type: quota
         metric: requests
         limit: 1000
-        timeFrame: month
-        geo: global
+        timeFrame: hour
+        geo: US
         domains:
           - https://api.fiscaldata.treasury.gov/services/api/fiscal_service
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: OFAC SLS Requests
+        description: Unauthenticated free access to the OFAC Sanctions List Service.
+        name: ofac_requests
+        type: quota
+        metric: requests
+        limit: -1
+        timeFrame: month
+        geo: US
+        domains:
           - https://sanctionslistservice.ofac.treas.gov/api
         unit: 1
         price: '0.00'
         userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
+      - label: TreasuryDirect / IRS Open Endpoints
+        description: Free public datasets and feeds; fair-use throttling.
+        name: open_requests
+        type: quota
+        metric: requests
+        limit: -1
+        timeFrame: month
+        geo: US
         domains:
-          - https://api.fiscaldata.treasury.gov/services/api/fiscal_service
-          - https://sanctionslistservice.ofac.treas.gov/api
+          - https://www.treasurydirect.gov/
         unit: 1
         price: '0.00'
         userMultiplied: false
     elements:
       - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Treasury Fiscal Data API
-      - name: OFAC Sanctions List Service API
-      - name: TreasuryDirect Securities API
-      - name: SAM.gov Entity Management API
-      - name: IRS Public APIs
-  - id: department-of-the-treasury-pro
-    name: Professional
-    type: paid
-    description: Production tier for Department of the Treasury. Provides higher quotas, priority support,
-      and access to the broader API portfolio. Pricing placeholder; align with the provider's pricing
-      page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.fiscaldata.treasury.gov/services/api/fiscal_service
-          - https://sanctionslistservice.ofac.treas.gov/api
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://api.fiscaldata.treasury.gov/services/api/fiscal_service
-          - https://sanctionslistservice.ofac.treas.gov/api
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.fiscaldata.treasury.gov/services/api/fiscal_service
-          - https://sanctionslistservice.ofac.treas.gov/api
-        unit: 1000
-        price: TBD
-        userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Treasury Fiscal Data API
-      - name: OFAC Sanctions List Service API
-      - name: TreasuryDirect Securities API
-      - name: SAM.gov Entity Management API
-      - name: IRS Public APIs
-  - id: department-of-the-treasury-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Department of the Treasury. Includes dedicated capacity, contractual
-      SLAs, security review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: configurable
-        domains:
-          - https://api.fiscaldata.treasury.gov/services/api/fiscal_service
-          - https://sanctionslistservice.ofac.treas.gov/api
-        unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://api.fiscaldata.treasury.gov/services/api/fiscal_service
-          - https://sanctionslistservice.ofac.treas.gov/api
-        unit: 1
-        price: custom
-        userMultiplied: false
-    elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
+      - name: Open Data License (public-domain federal data)
       - name: Treasury Fiscal Data API
       - name: OFAC Sanctions List Service API
       - name: TreasuryDirect Securities API
