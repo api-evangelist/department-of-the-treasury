@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Treasury Fiscal Data API — Interest Rates
+  description: 'Treasury Fiscal Data API — Interest Rates. 1 operations. Lead operation: Average Interest Rates on U.S. Treasury
+    Securities. Self-contained Naftiko capability covering one Department Of The Treasury business surface.'
+  tags:
+  - Department Of The Treasury
+  - Interest Rates
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    DEPARTMENT_OF_THE_TREASURY_API_KEY: DEPARTMENT_OF_THE_TREASURY_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: fiscal-data-interest-rates
+    baseUri: https://api.fiscaldata.treasury.gov/services/api/fiscal_service
+    description: Treasury Fiscal Data API — Interest Rates business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-accounting-od-avg_interest_rates
+      path: /v2/accounting/od/avg_interest_rates
+      operations:
+      - name: getaverageinterestrates
+        method: GET
+        description: Average Interest Rates on U.S. Treasury Securities
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: fiscal-data-interest-rates-rest
+    port: 8080
+    description: REST adapter for Treasury Fiscal Data API — Interest Rates. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v2/accounting/od/avg-interest-rates
+      name: v2-accounting-od-avg-interest-rates
+      description: REST surface for v2-accounting-od-avg_interest_rates.
+      operations:
+      - method: GET
+        name: getaverageinterestrates
+        description: Average Interest Rates on U.S. Treasury Securities
+        call: fiscal-data-interest-rates.getaverageinterestrates
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: fiscal-data-interest-rates-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Treasury Fiscal Data API — Interest Rates. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: average-interest-rates-u-s-treasury
+      description: Average Interest Rates on U.S. Treasury Securities
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: fiscal-data-interest-rates.getaverageinterestrates
+      outputParameters:
+      - type: object
+        mapping: $.
