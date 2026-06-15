@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "OFAC Sanctions List Service API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sanctions Lists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Download the Specially Designated Nationals (SDN) List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sanctionslistservice.ofac.treas.gov/api/lists/sdn",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Download the Specially Designated Nationals (SDN) List"
+        },
+        {
+          "info": {
+            "name": "Download the Consolidated Sanctions List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://sanctionslistservice.ofac.treas.gov/api/lists/consolidated",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Download the Consolidated Sanctions List"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Structured search of the sanctions lists",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://sanctionslistservice.ofac.treas.gov/api/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Structured search of the sanctions lists"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
