@@ -6,7 +6,7 @@ description: >-
   several public APIs, anchored by the Bureau of the Fiscal Service's Fiscal Data API and the Office of Foreign Assets
   Control's Sanctions List Service.
 url: https://raw.githubusercontent.com/api-evangelist/department-of-the-treasury/main/apis.yml
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 created: '2024-12-03'
 modified: '2026-05-19'
 type: Index
