@@ -48,7 +48,7 @@ apis:
         url: openapi/fiscal-data-api-openapi.yml
       - type: JSONSchema
         url: json-schema/treasury-debt-record-schema.json
-      - type: Example
+      - type: Examples
         url: examples/debt-to-penny-example.json
       - type: Datasets
         url: https://fiscaldata.treasury.gov/datasets/
@@ -69,7 +69,7 @@ apis:
         url: openapi/ofac-sdn-api-openapi.yml
       - type: JSONSchema
         url: json-schema/sanctioned-entity-schema.json
-      - type: Example
+      - type: Examples
         url: examples/sanctioned-entity-example.json
       - type: Reference
         url: https://ofac.treasury.gov/specially-designated-nationals-and-blocked-persons-list-sdn-human-readable-lists
