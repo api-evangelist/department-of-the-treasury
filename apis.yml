@@ -19,6 +19,8 @@ tags:
   - Debt
   - Sanctions
 common:
+  - type: DomainSecurity
+    url: security/department-of-the-treasury-domain-security.yml
   - type: GitHubOrganization
     url: https://github.com/US-Department-of-the-Treasury
   - type: LinkedIn
@@ -29,6 +31,8 @@ common:
     type: Documentation
   - url: https://ofac.treasury.gov/
     type: Reference
+  - url: https://home.treasury.gov/rss.xml
+    type: Blog
 apis:
   - aid: department-of-the-treasury:fiscal-data-api
     name: Treasury Fiscal Data API
