@@ -19,6 +19,8 @@ tags:
   - Debt
   - Sanctions
 common:
+  - type: AgenticAccess
+    url: agentic-access/department-of-the-treasury-agentic-access.yml
   - type: DomainSecurity
     url: security/department-of-the-treasury-domain-security.yml
   - type: GitHubOrganization
