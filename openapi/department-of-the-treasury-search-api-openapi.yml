@@ -1,0 +1,144 @@
+openapi: 3.1.0
+info:
+  title: Treasury Fiscal Data Auctions Search API
+  description: The U.S. Department of the Treasury Fiscal Data API delivers standardized, machine-readable access to federal-finance datasets published by the Bureau of the Fiscal Service, including the Daily Treasury Statement, Monthly Treasury Statement, Debt to the Penny, Treasury Auctions, Federal Spending, Interest Rates, Exchange Rates, and many others.
+  version: '1'
+  contact:
+    name: Treasury Fiscal Data Support
+    url: https://fiscaldata.treasury.gov/about/
+  license:
+    name: Public Domain
+    url: https://creativecommons.org/publicdomain/mark/1.0/
+servers:
+- url: https://api.fiscaldata.treasury.gov/services/api/fiscal_service
+  description: Production
+tags:
+- name: Search
+  description: Structured search across the SDN and Consolidated lists
+paths:
+  /search:
+    post:
+      tags:
+      - Search
+      summary: Structured search of the sanctions lists
+      operationId: searchSanctions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+components:
+  schemas:
+    SearchRequest:
+      type: object
+      properties:
+        source:
+          type: array
+          items:
+            type: string
+            enum:
+            - SDN
+            - NS-PLC
+            - FSE-IR
+            - FSE-SY
+            - EO13662
+            - NS-ISA
+            - 561list
+            - PLC-HRIT-EO13818
+        type:
+          type: string
+          enum:
+          - Individual
+          - Entity
+          - Aircraft
+          - Vessel
+        name:
+          type: string
+        address:
+          type: string
+        country:
+          type: string
+        minScore:
+          type: integer
+          minimum: 0
+          maximum: 100
+    SanctionedEntity:
+      type: object
+      properties:
+        uid:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - Individual
+          - Entity
+          - Aircraft
+          - Vessel
+        programs:
+          type: array
+          items:
+            type: string
+        addresses:
+          type: array
+          items:
+            type: object
+        akas:
+          type: array
+          items:
+            type: object
+            properties:
+              category:
+                type: string
+              type:
+                type: string
+              lastName:
+                type: string
+              firstName:
+                type: string
+        ids:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+              number:
+                type: string
+              country:
+                type: string
+        nationalities:
+          type: array
+          items:
+            type: string
+        sanctionsListType:
+          type: string
+          enum:
+          - SDN
+          - Consolidated
+    SearchResponse:
+      type: object
+      properties:
+        total:
+          type: integer
+        results:
+          type: array
+          items:
+            allOf:
+            - $ref: '#/components/schemas/SanctionedEntity'
+            - type: object
+              properties:
+                matchScore:
+                  type: number
+externalDocs:
+  description: Fiscal Data API documentation
+  url: https://fiscaldata.treasury.gov/api-documentation/

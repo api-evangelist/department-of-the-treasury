@@ -1,0 +1,95 @@
+openapi: 3.1.0
+info:
+  title: Treasury Fiscal Data Auctions API
+  description: The U.S. Department of the Treasury Fiscal Data API delivers standardized, machine-readable access to federal-finance datasets published by the Bureau of the Fiscal Service, including the Daily Treasury Statement, Monthly Treasury Statement, Debt to the Penny, Treasury Auctions, Federal Spending, Interest Rates, Exchange Rates, and many others.
+  version: '1'
+  contact:
+    name: Treasury Fiscal Data Support
+    url: https://fiscaldata.treasury.gov/about/
+  license:
+    name: Public Domain
+    url: https://creativecommons.org/publicdomain/mark/1.0/
+servers:
+- url: https://api.fiscaldata.treasury.gov/services/api/fiscal_service
+  description: Production
+tags:
+- name: Auctions
+  description: Treasury securities auctions data
+paths:
+  /v2/accounting/od/securities_sales:
+    get:
+      tags:
+      - Auctions
+      summary: Securities Auctions and Sales
+      operationId: getSecuritiesSales
+      parameters:
+      - $ref: '#/components/parameters/Fields'
+      - $ref: '#/components/parameters/Filter'
+      - $ref: '#/components/parameters/Sort'
+      responses:
+        '200':
+          description: Dataset response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatasetResponse'
+components:
+  schemas:
+    DatasetResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        meta:
+          type: object
+          properties:
+            count:
+              type: integer
+            labels:
+              type: object
+            dataTypes:
+              type: object
+            dataFormats:
+              type: object
+            total-count:
+              type: integer
+            total-pages:
+              type: integer
+        links:
+          type: object
+          properties:
+            self:
+              type: string
+            first:
+              type: string
+            prev:
+              type: string
+            next:
+              type: string
+            last:
+              type: string
+  parameters:
+    Sort:
+      name: sort
+      in: query
+      description: Sort field(s); prefix with '-' for descending.
+      schema:
+        type: string
+    Filter:
+      name: filter
+      in: query
+      description: Filter expression (e.g. record_date:gte:2025-01-01).
+      schema:
+        type: string
+    Fields:
+      name: fields
+      in: query
+      description: Comma-separated list of fields to include in the response.
+      schema:
+        type: string
+externalDocs:
+  description: Fiscal Data API documentation
+  url: https://fiscaldata.treasury.gov/api-documentation/

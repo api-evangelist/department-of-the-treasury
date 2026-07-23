@@ -1,0 +1,134 @@
+openapi: 3.1.0
+info:
+  title: Treasury Fiscal Data Auctions Sanctions Lists API
+  description: The U.S. Department of the Treasury Fiscal Data API delivers standardized, machine-readable access to federal-finance datasets published by the Bureau of the Fiscal Service, including the Daily Treasury Statement, Monthly Treasury Statement, Debt to the Penny, Treasury Auctions, Federal Spending, Interest Rates, Exchange Rates, and many others.
+  version: '1'
+  contact:
+    name: Treasury Fiscal Data Support
+    url: https://fiscaldata.treasury.gov/about/
+  license:
+    name: Public Domain
+    url: https://creativecommons.org/publicdomain/mark/1.0/
+servers:
+- url: https://api.fiscaldata.treasury.gov/services/api/fiscal_service
+  description: Production
+tags:
+- name: Sanctions Lists
+  description: SDN and Consolidated Sanctions list downloads
+paths:
+  /lists/sdn:
+    get:
+      tags:
+      - Sanctions Lists
+      summary: Download the Specially Designated Nationals (SDN) List
+      operationId: getSdnList
+      parameters:
+      - name: format
+        in: query
+        schema:
+          type: string
+          enum:
+          - json
+          - xml
+          - csv
+          - pdf
+          default: json
+      responses:
+        '200':
+          description: SDN list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SanctionsListResponse'
+  /lists/consolidated:
+    get:
+      tags:
+      - Sanctions Lists
+      summary: Download the Consolidated Sanctions List
+      operationId: getConsolidatedList
+      parameters:
+      - name: format
+        in: query
+        schema:
+          type: string
+          enum:
+          - json
+          - xml
+          - csv
+      responses:
+        '200':
+          description: Consolidated list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SanctionsListResponse'
+components:
+  schemas:
+    SanctionsListResponse:
+      type: object
+      properties:
+        publishDate:
+          type: string
+          format: date
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SanctionedEntity'
+    SanctionedEntity:
+      type: object
+      properties:
+        uid:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+          enum:
+          - Individual
+          - Entity
+          - Aircraft
+          - Vessel
+        programs:
+          type: array
+          items:
+            type: string
+        addresses:
+          type: array
+          items:
+            type: object
+        akas:
+          type: array
+          items:
+            type: object
+            properties:
+              category:
+                type: string
+              type:
+                type: string
+              lastName:
+                type: string
+              firstName:
+                type: string
+        ids:
+          type: array
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+              number:
+                type: string
+              country:
+                type: string
+        nationalities:
+          type: array
+          items:
+            type: string
+        sanctionsListType:
+          type: string
+          enum:
+          - SDN
+          - Consolidated
+externalDocs:
+  description: Fiscal Data API documentation
+  url: https://fiscaldata.treasury.gov/api-documentation/
