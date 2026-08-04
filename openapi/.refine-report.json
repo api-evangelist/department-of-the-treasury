@@ -1,0 +1,28 @@
+{
+  "provider": "department-of-the-treasury",
+  "sources": [
+    "department-of-the-treasury-auctions-api-openapi.yml",
+    "department-of-the-treasury-debt-api-openapi.yml",
+    "department-of-the-treasury-exchange-rates-api-openapi.yml",
+    "department-of-the-treasury-interest-rates-api-openapi.yml",
+    "department-of-the-treasury-sanctions-lists-api-openapi.yml",
+    "department-of-the-treasury-search-api-openapi.yml",
+    "department-of-the-treasury-spending-api-openapi.yml",
+    "department-of-the-treasury-treasury-operations-api-openapi.yml"
+  ],
+  "outputs": [
+    "department-of-the-treasury-auctions-api-openapi.yml",
+    "department-of-the-treasury-debt-api-openapi.yml",
+    "department-of-the-treasury-exchange-rates-api-openapi.yml",
+    "department-of-the-treasury-interest-rates-api-openapi.yml",
+    "department-of-the-treasury-sanctions-lists-api-openapi.yml",
+    "department-of-the-treasury-search-api-openapi.yml",
+    "department-of-the-treasury-spending-api-openapi.yml",
+    "department-of-the-treasury-treasury-operations-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

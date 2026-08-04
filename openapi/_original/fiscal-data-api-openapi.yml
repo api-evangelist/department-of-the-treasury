@@ -1,0 +1,235 @@
+openapi: 3.1.0
+info:
+  title: Treasury Fiscal Data API
+  description: >-
+    The U.S. Department of the Treasury Fiscal Data API delivers standardized,
+    machine-readable access to federal-finance datasets published by the
+    Bureau of the Fiscal Service, including the Daily Treasury Statement,
+    Monthly Treasury Statement, Debt to the Penny, Treasury Auctions, Federal
+    Spending, Interest Rates, Exchange Rates, and many others.
+  version: '1'
+  contact:
+    name: Treasury Fiscal Data Support
+    url: https://fiscaldata.treasury.gov/about/
+  license:
+    name: Public Domain
+    url: https://creativecommons.org/publicdomain/mark/1.0/
+externalDocs:
+  description: Fiscal Data API documentation
+  url: https://fiscaldata.treasury.gov/api-documentation/
+servers:
+  - url: https://api.fiscaldata.treasury.gov/services/api/fiscal_service
+    description: Production
+tags:
+  - name: Debt
+    description: Federal debt-related datasets
+  - name: Treasury Operations
+    description: Daily and monthly Treasury statements
+  - name: Auctions
+    description: Treasury securities auctions data
+  - name: Spending
+    description: Federal spending datasets
+  - name: Revenue
+    description: Federal revenue datasets
+  - name: Interest Rates
+    description: Average interest rates and yield curves
+  - name: Exchange Rates
+    description: Foreign currency exchange rates
+paths:
+  /v2/accounting/od/debt_to_penny:
+    get:
+      tags: [Debt]
+      summary: Debt to the Penny
+      description: Daily total public debt outstanding to the penny.
+      operationId: getDebtToPenny
+      parameters:
+        - $ref: '#/components/parameters/Fields'
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Format'
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: Dataset response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatasetResponse'
+  /v1/accounting/dts/operating_cash_balance:
+    get:
+      tags: [Treasury Operations]
+      summary: Daily Treasury Statement - Operating Cash Balance
+      operationId: getOperatingCashBalance
+      parameters:
+        - $ref: '#/components/parameters/Fields'
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Format'
+        - $ref: '#/components/parameters/PageNumber'
+        - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: Dataset response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatasetResponse'
+  /v1/accounting/mts/mts_table_1:
+    get:
+      tags: [Treasury Operations]
+      summary: Monthly Treasury Statement - Summary of Receipts, Outlays, and Surplus or Deficit
+      operationId: getMonthlyTreasuryStatementTable1
+      parameters:
+        - $ref: '#/components/parameters/Fields'
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/Format'
+      responses:
+        '200':
+          description: Dataset response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatasetResponse'
+  /v2/accounting/od/securities_sales:
+    get:
+      tags: [Auctions]
+      summary: Securities Auctions and Sales
+      operationId: getSecuritiesSales
+      parameters:
+        - $ref: '#/components/parameters/Fields'
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Sort'
+      responses:
+        '200':
+          description: Dataset response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatasetResponse'
+  /v2/accounting/od/avg_interest_rates:
+    get:
+      tags: [Interest Rates]
+      summary: Average Interest Rates on U.S. Treasury Securities
+      operationId: getAverageInterestRates
+      parameters:
+        - $ref: '#/components/parameters/Fields'
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Sort'
+      responses:
+        '200':
+          description: Dataset response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatasetResponse'
+  /v1/accounting/od/rates_of_exchange:
+    get:
+      tags: [Exchange Rates]
+      summary: Treasury Reporting Rates of Exchange
+      operationId: getRatesOfExchange
+      parameters:
+        - $ref: '#/components/parameters/Fields'
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Sort'
+      responses:
+        '200':
+          description: Dataset response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatasetResponse'
+  /v1/accounting/od/utf:
+    get:
+      tags: [Spending]
+      summary: U.S. Treasury Monthly Statement of the Public Debt (MSPD)
+      operationId: getMSPD
+      parameters:
+        - $ref: '#/components/parameters/Fields'
+        - $ref: '#/components/parameters/Filter'
+        - $ref: '#/components/parameters/Sort'
+      responses:
+        '200':
+          description: Dataset response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatasetResponse'
+components:
+  parameters:
+    Fields:
+      name: fields
+      in: query
+      description: Comma-separated list of fields to include in the response.
+      schema:
+        type: string
+    Filter:
+      name: filter
+      in: query
+      description: Filter expression (e.g. record_date:gte:2025-01-01).
+      schema:
+        type: string
+    Sort:
+      name: sort
+      in: query
+      description: Sort field(s); prefix with '-' for descending.
+      schema:
+        type: string
+    Format:
+      name: format
+      in: query
+      schema:
+        type: string
+        enum: [json, csv, xml]
+        default: json
+    PageNumber:
+      name: page[number]
+      in: query
+      schema:
+        type: integer
+        default: 1
+    PageSize:
+      name: page[size]
+      in: query
+      schema:
+        type: integer
+        default: 100
+        maximum: 10000
+  schemas:
+    DatasetResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        meta:
+          type: object
+          properties:
+            count:
+              type: integer
+            labels:
+              type: object
+            dataTypes:
+              type: object
+            dataFormats:
+              type: object
+            total-count:
+              type: integer
+            total-pages:
+              type: integer
+        links:
+          type: object
+          properties:
+            self:
+              type: string
+            first:
+              type: string
+            prev:
+              type: string
+            next:
+              type: string
+            last:
+              type: string
