@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Treasury Fiscal Data Auctions Interest Rates API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Interest Rates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Average Interest Rates on U.S. Treasury Securities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v2/accounting/od/avg_interest_rates",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter expression (e.g. record_date:gte:2025-01-01)."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort field(s); prefix with '-' for descending."
+              }
+            ]
+          },
+          "docs": "Average Interest Rates on U.S. Treasury Securities"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,120 @@
+{
+  "item": [
+    {
+      "id": "fd830118-9988-4bc0-bcb9-d9da7bcaf18a",
+      "name": "Search",
+      "description": {
+        "content": "Structured search across the SDN and Consolidated lists",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2082066e-6825-4ffe-a47e-c449c7d7a7ab",
+          "name": "Structured search of the sanctions lists",
+          "request": {
+            "name": "Structured search of the sanctions lists",
+            "description": {},
+            "url": {
+              "path": [
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"source\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"address\": \"<string>\",\n  \"country\": \"<string>\",\n  \"minScore\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ff897c93-13c7-445b-b1b9-f0a41a658b30",
+              "name": "Search results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"source\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"address\": \"<string>\",\n  \"country\": \"<string>\",\n  \"minScore\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total\": 2962,\n  \"results\": [\n    {\n      \"uid\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"Entity\",\n      \"programs\": [\n        \"string\",\n        \"string\"\n      ],\n      \"akas\": [\n        {\n          \"category\": \"string\",\n          \"type\": \"string\",\n          \"lastName\": \"string\",\n          \"firstName\": \"string\"\n        },\n        {\n          \"category\": \"string\",\n          \"type\": \"string\",\n          \"lastName\": \"string\",\n          \"firstName\": \"string\"\n        }\n      ],\n      \"ids\": [\n        {\n          \"type\": \"string\",\n          \"number\": \"string\",\n          \"country\": \"string\"\n        },\n        {\n          \"type\": \"string\",\n          \"number\": \"string\",\n          \"country\": \"string\"\n        }\n      ],\n      \"nationalities\": [\n        \"string\",\n        \"string\"\n      ],\n      \"sanctionsListType\": \"SDN\",\n      \"matchScore\": 3363.4612267685684\n    },\n    {\n      \"uid\": \"string\",\n      \"name\": \"string\",\n      \"type\": \"Vessel\",\n      \"programs\": [\n        \"string\",\n        \"string\"\n      ],\n      \"akas\": [\n        {\n          \"category\": \"string\",\n          \"type\": \"string\",\n          \"lastName\": \"string\",\n          \"firstName\": \"string\"\n        },\n        {\n          \"category\": \"string\",\n          \"type\": \"string\",\n          \"lastName\": \"string\",\n          \"firstName\": \"string\"\n        }\n      ],\n      \"ids\": [\n        {\n          \"type\": \"string\",\n          \"number\": \"string\",\n          \"country\": \"string\"\n        },\n        {\n          \"type\": \"string\",\n          \"number\": \"string\",\n          \"country\": \"string\"\n        }\n      ],\n      \"nationalities\": [\n        \"string\",\n        \"string\"\n      ],\n      \"sanctionsListType\": \"SDN\",\n      \"matchScore\": 613.553203558781\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9e336e26-a545-4068-800f-8393c65f4a6d",
+    "name": "Treasury Fiscal Data Auctions Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The U.S. Department of the Treasury Fiscal Data API delivers standardized, machine-readable access to federal-finance datasets published by the Bureau of the Fiscal Service, including the Daily Treasury Statement, Monthly Treasury Statement, Debt to the Penny, Treasury Auctions, Federal Spending, Interest Rates, Exchange Rates, and many others.\n\nContact Support:\n Name: Treasury Fiscal Data Support",
+      "type": "text/plain"
+    }
+  }
+}

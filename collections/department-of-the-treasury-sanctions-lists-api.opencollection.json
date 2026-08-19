@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Treasury Fiscal Data Auctions Sanctions Lists API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sanctions Lists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Download the Specially Designated Nationals (SDN) List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/lists/sdn",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Download the Specially Designated Nationals (SDN) List"
+        },
+        {
+          "info": {
+            "name": "Download the Consolidated Sanctions List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/lists/consolidated",
+            "params": [
+              {
+                "name": "format",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Download the Consolidated Sanctions List"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

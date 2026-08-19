@@ -1,0 +1,100 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Treasury Fiscal Data Auctions Treasury Operations API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Treasury Operations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Daily Treasury Statement - Operating Cash Balance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/dts/operating_cash_balance",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter expression (e.g. record_date:gte:2025-01-01)."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort field(s); prefix with '-' for descending."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[number]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page[size]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Daily Treasury Statement - Operating Cash Balance"
+        },
+        {
+          "info": {
+            "name": "Monthly Treasury Statement - Summary of Receipts, Outlays, and Surplus or Deficit",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/mts/mts_table_1",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter expression (e.g. record_date:gte:2025-01-01)."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort field(s); prefix with '-' for descending."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Monthly Treasury Statement - Summary of Receipts, Outlays, and Surplus or Deficit"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,137 @@
+{
+  "item": [
+    {
+      "id": "cbd94ea0-3fc7-4e21-9a6a-48925001e027",
+      "name": "Exchange Rates",
+      "description": {
+        "content": "Foreign currency exchange rates",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "916a33b2-ae8c-4fb3-947b-3c34e3a37740",
+          "name": "Treasury Reporting Rates of Exchange",
+          "request": {
+            "name": "Treasury Reporting Rates of Exchange",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "accounting",
+                "od",
+                "rates_of_exchange"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "Filter expression (e.g. record_date:gte:2025-01-01)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort field(s); prefix with '-' for descending."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f16aeb17-d715-41fb-b2f5-023b170ba3d0",
+              "name": "Dataset response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "accounting",
+                    "od",
+                    "rates_of_exchange"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"key_0\": true,\n      \"key_1\": 523,\n      \"key_2\": true\n    },\n    {\n      \"key_0\": true\n    }\n  ],\n  \"meta\": {\n    \"count\": 5979,\n    \"labels\": {},\n    \"dataTypes\": {},\n    \"dataFormats\": {},\n    \"total-count\": 9768,\n    \"total-pages\": 6898\n  },\n  \"links\": {\n    \"self\": \"string\",\n    \"first\": \"string\",\n    \"prev\": \"string\",\n    \"next\": \"string\",\n    \"last\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "3d237df8-e496-44f3-9f0b-e42b26a9ca86",
+    "name": "Treasury Fiscal Data Auctions Exchange Rates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The U.S. Department of the Treasury Fiscal Data API delivers standardized, machine-readable access to federal-finance datasets published by the Bureau of the Fiscal Service, including the Daily Treasury Statement, Monthly Treasury Statement, Debt to the Penny, Treasury Auctions, Federal Spending, Interest Rates, Exchange Rates, and many others.\n\nContact Support:\n Name: Treasury Fiscal Data Support",
+      "type": "text/plain"
+    }
+  }
+}

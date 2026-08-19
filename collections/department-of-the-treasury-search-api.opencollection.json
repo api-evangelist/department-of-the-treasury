@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Treasury Fiscal Data Auctions Search API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Structured search of the sanctions lists",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Structured search of the sanctions lists"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

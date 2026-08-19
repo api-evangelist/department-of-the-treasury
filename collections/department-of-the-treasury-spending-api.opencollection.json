@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Treasury Fiscal Data Auctions Spending API",
+    "version": "1"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Spending",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "U.S. Treasury Monthly Statement of the Public Debt (MSPD)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/v1/accounting/od/utf",
+            "params": [
+              {
+                "name": "fields",
+                "value": "",
+                "type": "query",
+                "description": "Comma-separated list of fields to include in the response."
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "Filter expression (e.g. record_date:gte:2025-01-01)."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort field(s); prefix with '-' for descending."
+              }
+            ]
+          },
+          "docs": "U.S. Treasury Monthly Statement of the Public Debt (MSPD)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,137 @@
+{
+  "item": [
+    {
+      "id": "e41344f9-48d0-4938-a23f-4cd9d5423567",
+      "name": "Spending",
+      "description": {
+        "content": "Federal spending datasets",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a564c209-a4d9-4c10-8dcb-035851451c4e",
+          "name": "U.S. Treasury Monthly Statement of the Public Debt (MSPD)",
+          "request": {
+            "name": "U.S. Treasury Monthly Statement of the Public Debt (MSPD)",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "accounting",
+                "od",
+                "utf"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields",
+                  "value": "<string>",
+                  "description": "Comma-separated list of fields to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>",
+                  "description": "Filter expression (e.g. record_date:gte:2025-01-01)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort field(s); prefix with '-' for descending."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3f611dc9-24f3-49f0-9d97-089e01bdb7c9",
+              "name": "Dataset response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "accounting",
+                    "od",
+                    "utf"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 3939.3787272270442\n    },\n    {\n      \"key_0\": false\n    }\n  ],\n  \"meta\": {\n    \"count\": 347,\n    \"labels\": {},\n    \"dataTypes\": {},\n    \"dataFormats\": {},\n    \"total-count\": 5817,\n    \"total-pages\": 7375\n  },\n  \"links\": {\n    \"self\": \"string\",\n    \"first\": \"string\",\n    \"prev\": \"string\",\n    \"next\": \"string\",\n    \"last\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.fiscaldata.treasury.gov/services/api/fiscal_service",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f031f7ea-cd28-47bb-84a6-fc513eb4d75c",
+    "name": "Treasury Fiscal Data Auctions Spending API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The U.S. Department of the Treasury Fiscal Data API delivers standardized, machine-readable access to federal-finance datasets published by the Bureau of the Fiscal Service, including the Daily Treasury Statement, Monthly Treasury Statement, Debt to the Penny, Treasury Auctions, Federal Spending, Interest Rates, Exchange Rates, and many others.\n\nContact Support:\n Name: Treasury Fiscal Data Support",
+      "type": "text/plain"
+    }
+  }
+}
