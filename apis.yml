@@ -26,6 +26,11 @@ position: Consuming
 access: 3rd-Party
 specificationVersion: '0.23'
 tags:
+  - Federal-Government
+  - Finance
+  - Debt
+  - Sanctions
+tags_raw:
   - Federal Government
   - Finance
   - Debt
