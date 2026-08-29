@@ -1,28 +1,35 @@
 {
   "provider": "department-of-the-treasury",
   "sources": [
-    "department-of-the-treasury-auctions-api-openapi.yml",
-    "department-of-the-treasury-debt-api-openapi.yml",
-    "department-of-the-treasury-exchange-rates-api-openapi.yml",
-    "department-of-the-treasury-interest-rates-api-openapi.yml",
-    "department-of-the-treasury-sanctions-lists-api-openapi.yml",
-    "department-of-the-treasury-search-api-openapi.yml",
-    "department-of-the-treasury-spending-api-openapi.yml",
-    "department-of-the-treasury-treasury-operations-api-openapi.yml"
+    "_original/fiscal-data-api-openapi.yml",
+    "_original/ofac-sdn-api-openapi.yml"
   ],
   "outputs": [
     "department-of-the-treasury-auctions-api-openapi.yml",
     "department-of-the-treasury-debt-api-openapi.yml",
     "department-of-the-treasury-exchange-rates-api-openapi.yml",
     "department-of-the-treasury-interest-rates-api-openapi.yml",
-    "department-of-the-treasury-sanctions-lists-api-openapi.yml",
-    "department-of-the-treasury-search-api-openapi.yml",
     "department-of-the-treasury-spending-api-openapi.yml",
-    "department-of-the-treasury-treasury-operations-api-openapi.yml"
+    "department-of-the-treasury-treasury-operations-api-openapi.yml",
+    "department-of-the-treasury-sanctions-lists-api-openapi.yml",
+    "department-of-the-treasury-search-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "fiscal-data-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "ofac-sdn-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0"
+  ],
+  "skipped": [
+    "department-of-the-treasury-auctions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "department-of-the-treasury-debt-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "department-of-the-treasury-exchange-rates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "department-of-the-treasury-interest-rates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "department-of-the-treasury-sanctions-lists-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "department-of-the-treasury-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "department-of-the-treasury-spending-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "department-of-the-treasury-treasury-operations-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
