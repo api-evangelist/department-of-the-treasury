@@ -1,0 +1,35 @@
+slug: department-of-the-treasury
+provider: Department of the Treasury
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Public Sector & Government
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Treasury Operations
+  spec_file: department-of-the-treasury-treasury-operations-api-openapi.yml
+  capability_id: BC-3280
+  capability_id_l1: BC-3280
+  capability_name: Public Finance & Budget Management
+  confidence: 0.85
+  evidence: Daily Treasury Statement - Operating Cash Balance ... Monthly Treasury Statement - Summary
+    of Receipts, Outlays, and Surplus or Deficit
+  reason: Government cash-position and receipts/outlays statements are squarely public finance and treasury
+    operations; the surface spans both treasury cash operations and fiscal reporting so no single L2 is
+    asserted.
+- tag: Spending
+  spec_file: department-of-the-treasury-spending-api-openapi.yml
+  capability_id: BC-3280.60
+  capability_id_l1: BC-3280
+  capability_name: Fiscal Reporting and Disclosure
+  confidence: 0.7
+  evidence: GET /v1/accounting/od/utf  getMSPD  U.S. Treasury Monthly Statement of the Public Debt (MSPD)
+  reason: Publication of an official federal fiscal/public-debt statement is public finance reporting
+    and disclosure; L1 is clear, L2 slightly ambiguous between fiscal reporting and public debt management.

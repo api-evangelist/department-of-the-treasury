@@ -47,6 +47,9 @@ tags_raw:
   - Debt
   - Sanctions
 common:
+  - type: CapabilityMap
+    url: capabilities/department-of-the-treasury-capability-edges.yml
+    name: Department of the Treasury Business Capability Map
   - type: AgenticAccess
     url: agentic-access/department-of-the-treasury-agentic-access.yml
   - type: DomainSecurity
