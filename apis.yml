@@ -1,10 +1,9 @@
 aid: department-of-the-treasury
 name: Department of the Treasury
-description: >-
-  The U.S. Department of the Treasury manages federal finances, public debt, Treasury securities, U.S. currency
-  production, tax administration, financial sanctions, and economic-statistical reporting. Treasury bureaus publish
-  several public APIs, anchored by the Bureau of the Fiscal Service's Fiscal Data API and the Office of Foreign Assets
-  Control's Sanctions List Service.
+description: The U.S. Department of the Treasury manages federal finances, public debt, Treasury securities,
+  U.S. currency production, tax administration, financial sanctions, and economic-statistical reporting.
+  Treasury bureaus publish several public APIs, anchored by the Bureau of the Fiscal Service's Fiscal
+  Data API and the Office of Foreign Assets Control's Sanctions List Service.
 url: https://raw.githubusercontent.com/api-evangelist/department-of-the-treasury/main/apis.yml
 deliveryModel:
   model: unknown
@@ -31,49 +30,48 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/department-of-the-treasury.png
 created: '2024-12-03'
-modified: '2026-05-19'
+modified: '2026-09-16'
 type: Index
 position: Consuming
 access: 3rd-Party
 specificationVersion: '0.23'
 tags:
-  - Federal-Government
-  - Finance
-  - Debt
-  - Sanctions
+- Federal-Government
+- Finance
+- Debt
+- Sanctions
 tags_raw:
-  - Federal Government
-  - Finance
-  - Debt
-  - Sanctions
+- Federal Government
+- Finance
+- Debt
+- Sanctions
 common:
-  - type: Website
-    url: https://www.treasury.gov/
-  - type: CapabilityMap
-    url: capabilities/department-of-the-treasury-capability-edges.yml
-    name: Department of the Treasury Business Capability Map
-  - type: AgenticAccess
-    url: agentic-access/department-of-the-treasury-agentic-access.yml
-  - type: DomainSecurity
-    url: security/department-of-the-treasury-domain-security.yml
-  - type: GitHubOrganization
-    url: https://github.com/US-Department-of-the-Treasury
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/us-treasury
-  - url: https://home.treasury.gov/
-    type: Portal
-  - url: https://fiscaldata.treasury.gov/api-documentation/
-    type: Documentation
-  - url: https://ofac.treasury.gov/
-    type: Reference
-  - url: https://home.treasury.gov/rss.xml
-    type: Blog
+- type: Website
+  url: https://www.treasury.gov/
+- type: CapabilityMap
+  url: capabilities/department-of-the-treasury-capability-edges.yml
+  name: Department of the Treasury Business Capability Map
+- type: AgenticAccess
+  url: agentic-access/department-of-the-treasury-agentic-access.yml
+- type: DomainSecurity
+  url: security/department-of-the-treasury-domain-security.yml
+- type: GitHubOrganization
+  url: https://github.com/US-Department-of-the-Treasury
+- type: LinkedIn
+  url: https://www.linkedin.com/company/us-treasury
+- url: https://home.treasury.gov/
+  type: Portal
+- url: https://fiscaldata.treasury.gov/api-documentation/
+  type: Documentation
+- url: https://ofac.treasury.gov/
+  type: Reference
+- url: https://home.treasury.gov/rss.xml
+  type: Blog
 apis:
 - aid: department-of-the-treasury:treasury-direct-api
   name: TreasuryDirect Securities API
-  description: >-
-    Public reference data on marketable Treasury securities (auctions, results, security details) published
-    via TreasuryDirect.
+  description: Public reference data on marketable Treasury securities (auctions, results, security details)
+    published via TreasuryDirect.
   humanURL: https://www.treasurydirect.gov/TA_WS/securities/announced
   tags:
   - Securities
@@ -85,8 +83,7 @@ apis:
     url: https://www.treasurydirect.gov/instit/instit.htm
 - aid: department-of-the-treasury:sam-entity-management-api
   name: SAM.gov Entity Management API
-  description: >-
-    Federal Service for Award Management (SAM) entity registration, exclusions, and assistance-listings
+  description: Federal Service for Award Management (SAM) entity registration, exclusions, and assistance-listings
     data published via api.data.gov.
   humanURL: https://open.gsa.gov/api/entity-api/
   tags:
@@ -99,9 +96,8 @@ apis:
     url: https://sam.gov/
 - aid: department-of-the-treasury:irs-public-apis
   name: IRS Public APIs
-  description: >-
-    The Internal Revenue Service exposes select public datasets and tools through download endpoints,
-    including Tax-Exempt Organization Search.
+  description: The Internal Revenue Service exposes select public datasets and tools through download
+    endpoints, including Tax-Exempt Organization Search.
   humanURL: https://www.irs.gov/charities-non-profits/tax-exempt-organization-search
   tags:
   - Tax
@@ -134,8 +130,7 @@ apis:
   - type: Examples
     url: examples/sanctioned-entity-example.json
   - type: Reference
-    url: >-
-      https://ofac.treasury.gov/specially-designated-nationals-and-blocked-persons-list-sdn-human-readable-lists
+    url: https://ofac.treasury.gov/specially-designated-nationals-and-blocked-persons-list-sdn-human-readable-lists
 - aid: department-of-the-treasury:department-of-the-treasury-debt-api
   name: Department of the Treasury Debt API
   description: Federal debt-related datasets
@@ -161,8 +156,7 @@ apis:
   - type: Examples
     url: examples/sanctioned-entity-example.json
   - type: Reference
-    url: >-
-      https://ofac.treasury.gov/specially-designated-nationals-and-blocked-persons-list-sdn-human-readable-lists
+    url: https://ofac.treasury.gov/specially-designated-nationals-and-blocked-persons-list-sdn-human-readable-lists
 - aid: department-of-the-treasury:department-of-the-treasury-exchange-rates-api
   name: Department of the Treasury Exchange Rates API
   description: Foreign currency exchange rates
@@ -188,8 +182,7 @@ apis:
   - type: Examples
     url: examples/sanctioned-entity-example.json
   - type: Reference
-    url: >-
-      https://ofac.treasury.gov/specially-designated-nationals-and-blocked-persons-list-sdn-human-readable-lists
+    url: https://ofac.treasury.gov/specially-designated-nationals-and-blocked-persons-list-sdn-human-readable-lists
 - aid: department-of-the-treasury:department-of-the-treasury-interest-rates-api
   name: Department of the Treasury Interest Rates API
   description: Average interest rates and yield curves
@@ -215,8 +208,7 @@ apis:
   - type: Examples
     url: examples/sanctioned-entity-example.json
   - type: Reference
-    url: >-
-      https://ofac.treasury.gov/specially-designated-nationals-and-blocked-persons-list-sdn-human-readable-lists
+    url: https://ofac.treasury.gov/specially-designated-nationals-and-blocked-persons-list-sdn-human-readable-lists
 - aid: department-of-the-treasury:department-of-the-treasury-sanctions-lists-api
   name: Department of the Treasury Sanctions Lists API
   description: SDN and Consolidated Sanctions list downloads
@@ -242,8 +234,7 @@ apis:
   - type: Examples
     url: examples/sanctioned-entity-example.json
   - type: Reference
-    url: >-
-      https://ofac.treasury.gov/specially-designated-nationals-and-blocked-persons-list-sdn-human-readable-lists
+    url: https://ofac.treasury.gov/specially-designated-nationals-and-blocked-persons-list-sdn-human-readable-lists
 - aid: department-of-the-treasury:department-of-the-treasury-search-api
   name: Department of the Treasury Search API
   description: Structured search across the SDN and Consolidated lists
@@ -269,8 +260,7 @@ apis:
   - type: Examples
     url: examples/sanctioned-entity-example.json
   - type: Reference
-    url: >-
-      https://ofac.treasury.gov/specially-designated-nationals-and-blocked-persons-list-sdn-human-readable-lists
+    url: https://ofac.treasury.gov/specially-designated-nationals-and-blocked-persons-list-sdn-human-readable-lists
 - aid: department-of-the-treasury:department-of-the-treasury-spending-api
   name: Department of the Treasury Spending API
   description: Federal spending datasets
@@ -296,10 +286,9 @@ apis:
   - type: Examples
     url: examples/sanctioned-entity-example.json
   - type: Reference
-    url: >-
-      https://ofac.treasury.gov/specially-designated-nationals-and-blocked-persons-list-sdn-human-readable-lists
+    url: https://ofac.treasury.gov/specially-designated-nationals-and-blocked-persons-list-sdn-human-readable-lists
 - aid: department-of-the-treasury:department-of-the-treasury-treasury-operations-api
-  name: Department of the Treasury Treasury Operations API
+  name: Department of the Treasury Operations API
   description: Daily and monthly Treasury statements
   humanURL: https://fiscaldata.treasury.gov/api-documentation/
   baseURL: https://api.fiscaldata.treasury.gov/services/api/fiscal_service
@@ -323,8 +312,7 @@ apis:
   - type: Examples
     url: examples/sanctioned-entity-example.json
   - type: Reference
-    url: >-
-      https://ofac.treasury.gov/specially-designated-nationals-and-blocked-persons-list-sdn-human-readable-lists
+    url: https://ofac.treasury.gov/specially-designated-nationals-and-blocked-persons-list-sdn-human-readable-lists
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
