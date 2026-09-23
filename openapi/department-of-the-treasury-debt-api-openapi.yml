@@ -76,13 +76,6 @@ components:
             last:
               type: string
   parameters:
-    PageSize:
-      name: page[size]
-      in: query
-      schema:
-        type: integer
-        default: 100
-        maximum: 10000
     Format:
       name: format
       in: query
@@ -99,6 +92,13 @@ components:
       schema:
         type: integer
         default: 1
+    PageSize:
+      name: page[size]
+      in: query
+      schema:
+        type: integer
+        default: 100
+        maximum: 10000
     Fields:
       name: fields
       in: query

@@ -78,16 +78,16 @@ components:
       description: Filter expression (e.g. record_date:gte:2025-01-01).
       schema:
         type: string
-    Fields:
-      name: fields
-      in: query
-      description: Comma-separated list of fields to include in the response.
-      schema:
-        type: string
     Sort:
       name: sort
       in: query
       description: Sort field(s); prefix with '-' for descending.
+      schema:
+        type: string
+    Fields:
+      name: fields
+      in: query
+      description: Comma-separated list of fields to include in the response.
       schema:
         type: string
 externalDocs:

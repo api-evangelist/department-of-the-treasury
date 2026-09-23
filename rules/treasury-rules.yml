@@ -1,4 +1,4 @@
-name: Department of the Treasury API Rules
+x-name: Department of the Treasury API Rules
 description: >-
   Rules and constraints governing access to Treasury's public APIs (Fiscal
   Data, OFAC Sanctions List Service, SAM.gov via api.data.gov).
