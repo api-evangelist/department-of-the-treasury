@@ -34,6 +34,25 @@ paths:
               schema:
                 $ref: '#/components/schemas/DatasetResponse'
 components:
+  parameters:
+    Filter:
+      name: filter
+      in: query
+      description: Filter expression (e.g. record_date:gte:2025-01-01).
+      schema:
+        type: string
+    Fields:
+      name: fields
+      in: query
+      description: Comma-separated list of fields to include in the response.
+      schema:
+        type: string
+    Sort:
+      name: sort
+      in: query
+      description: Sort field(s); prefix with '-' for descending.
+      schema:
+        type: string
   schemas:
     DatasetResponse:
       type: object
@@ -71,25 +90,6 @@ components:
               type: string
             last:
               type: string
-  parameters:
-    Filter:
-      name: filter
-      in: query
-      description: Filter expression (e.g. record_date:gte:2025-01-01).
-      schema:
-        type: string
-    Sort:
-      name: sort
-      in: query
-      description: Sort field(s); prefix with '-' for descending.
-      schema:
-        type: string
-    Fields:
-      name: fields
-      in: query
-      description: Comma-separated list of fields to include in the response.
-      schema:
-        type: string
 externalDocs:
   description: Fiscal Data API documentation
   url: https://fiscaldata.treasury.gov/api-documentation/

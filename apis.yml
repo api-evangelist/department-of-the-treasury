@@ -36,7 +36,7 @@ position: Consuming
 access: 3rd-Party
 specificationVersion: '0.23'
 tags:
-- Federal-Government
+- Federal Government
 - Finance
 - Debt
 - Sanctions
@@ -45,6 +45,7 @@ tags_raw:
 - Finance
 - Debt
 - Sanctions
+- Federal-Government
 common:
 - type: Website
   url: https://www.treasury.gov/

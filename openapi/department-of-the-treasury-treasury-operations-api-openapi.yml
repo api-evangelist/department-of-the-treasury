@@ -55,6 +55,48 @@ paths:
               schema:
                 $ref: '#/components/schemas/DatasetResponse'
 components:
+  parameters:
+    Filter:
+      name: filter
+      in: query
+      description: Filter expression (e.g. record_date:gte:2025-01-01).
+      schema:
+        type: string
+    PageNumber:
+      name: page[number]
+      in: query
+      schema:
+        type: integer
+        default: 1
+    PageSize:
+      name: page[size]
+      in: query
+      schema:
+        type: integer
+        default: 100
+        maximum: 10000
+    Sort:
+      name: sort
+      in: query
+      description: Sort field(s); prefix with '-' for descending.
+      schema:
+        type: string
+    Format:
+      name: format
+      in: query
+      schema:
+        type: string
+        enum:
+        - json
+        - csv
+        - xml
+        default: json
+    Fields:
+      name: fields
+      in: query
+      description: Comma-separated list of fields to include in the response.
+      schema:
+        type: string
   schemas:
     DatasetResponse:
       type: object
@@ -92,48 +134,6 @@ components:
               type: string
             last:
               type: string
-  parameters:
-    Format:
-      name: format
-      in: query
-      schema:
-        type: string
-        enum:
-        - json
-        - csv
-        - xml
-        default: json
-    PageNumber:
-      name: page[number]
-      in: query
-      schema:
-        type: integer
-        default: 1
-    PageSize:
-      name: page[size]
-      in: query
-      schema:
-        type: integer
-        default: 100
-        maximum: 10000
-    Fields:
-      name: fields
-      in: query
-      description: Comma-separated list of fields to include in the response.
-      schema:
-        type: string
-    Filter:
-      name: filter
-      in: query
-      description: Filter expression (e.g. record_date:gte:2025-01-01).
-      schema:
-        type: string
-    Sort:
-      name: sort
-      in: query
-      description: Sort field(s); prefix with '-' for descending.
-      schema:
-        type: string
 externalDocs:
   description: Fiscal Data API documentation
   url: https://fiscaldata.treasury.gov/api-documentation/
