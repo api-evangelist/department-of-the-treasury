@@ -37,53 +37,6 @@ paths:
                 $ref: '#/components/schemas/SearchResponse'
 components:
   schemas:
-    SearchResponse:
-      type: object
-      properties:
-        total:
-          type: integer
-        results:
-          type: array
-          items:
-            allOf:
-            - $ref: '#/components/schemas/SanctionedEntity'
-            - type: object
-              properties:
-                matchScore:
-                  type: number
-    SearchRequest:
-      type: object
-      properties:
-        source:
-          type: array
-          items:
-            type: string
-            enum:
-            - SDN
-            - NS-PLC
-            - FSE-IR
-            - FSE-SY
-            - EO13662
-            - NS-ISA
-            - 561list
-            - PLC-HRIT-EO13818
-        type:
-          type: string
-          enum:
-          - Individual
-          - Entity
-          - Aircraft
-          - Vessel
-        name:
-          type: string
-        address:
-          type: string
-        country:
-          type: string
-        minScore:
-          type: integer
-          minimum: 0
-          maximum: 100
     SanctionedEntity:
       type: object
       properties:
@@ -139,6 +92,53 @@ components:
           enum:
           - SDN
           - Consolidated
+    SearchRequest:
+      type: object
+      properties:
+        source:
+          type: array
+          items:
+            type: string
+            enum:
+            - SDN
+            - NS-PLC
+            - FSE-IR
+            - FSE-SY
+            - EO13662
+            - NS-ISA
+            - 561list
+            - PLC-HRIT-EO13818
+        type:
+          type: string
+          enum:
+          - Individual
+          - Entity
+          - Aircraft
+          - Vessel
+        name:
+          type: string
+        address:
+          type: string
+        country:
+          type: string
+        minScore:
+          type: integer
+          minimum: 0
+          maximum: 100
+    SearchResponse:
+      type: object
+      properties:
+        total:
+          type: integer
+        results:
+          type: array
+          items:
+            allOf:
+            - $ref: '#/components/schemas/SanctionedEntity'
+            - type: object
+              properties:
+                matchScore:
+                  type: number
 externalDocs:
   description: OFAC Sanctions List Service
   url: https://sanctionslistservice.ofac.treas.gov/

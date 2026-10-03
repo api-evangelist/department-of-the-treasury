@@ -64,16 +64,6 @@ paths:
                 $ref: '#/components/schemas/SanctionsListResponse'
 components:
   schemas:
-    SanctionsListResponse:
-      type: object
-      properties:
-        publishDate:
-          type: string
-          format: date
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/SanctionedEntity'
     SanctionedEntity:
       type: object
       properties:
@@ -129,6 +119,16 @@ components:
           enum:
           - SDN
           - Consolidated
+    SanctionsListResponse:
+      type: object
+      properties:
+        publishDate:
+          type: string
+          format: date
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/SanctionedEntity'
 externalDocs:
   description: OFAC Sanctions List Service
   url: https://sanctionslistservice.ofac.treas.gov/
