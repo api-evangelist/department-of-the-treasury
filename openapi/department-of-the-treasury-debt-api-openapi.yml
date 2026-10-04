@@ -39,29 +39,6 @@ paths:
                 $ref: '#/components/schemas/DatasetResponse'
 components:
   parameters:
-    Format:
-      name: format
-      in: query
-      schema:
-        type: string
-        enum:
-        - json
-        - csv
-        - xml
-        default: json
-    PageNumber:
-      name: page[number]
-      in: query
-      schema:
-        type: integer
-        default: 1
-    PageSize:
-      name: page[size]
-      in: query
-      schema:
-        type: integer
-        default: 100
-        maximum: 10000
     Filter:
       name: filter
       in: query
@@ -74,12 +51,35 @@ components:
       description: Comma-separated list of fields to include in the response.
       schema:
         type: string
+    PageSize:
+      name: page[size]
+      in: query
+      schema:
+        type: integer
+        default: 100
+        maximum: 10000
+    Format:
+      name: format
+      in: query
+      schema:
+        type: string
+        enum:
+        - json
+        - csv
+        - xml
+        default: json
     Sort:
       name: sort
       in: query
       description: Sort field(s); prefix with '-' for descending.
       schema:
         type: string
+    PageNumber:
+      name: page[number]
+      in: query
+      schema:
+        type: integer
+        default: 1
   schemas:
     DatasetResponse:
       type: object
