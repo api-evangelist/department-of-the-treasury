@@ -47,6 +47,12 @@ tags_raw:
 - Sanctions
 - Federal-Government
 common:
+- type: Plans
+  url: plans/department-of-the-treasury-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/department-of-the-treasury-rate-limits.yml
+- type: FinOps
+  url: finops/department-of-the-treasury-finops.yml
 - type: Website
   url: https://www.treasury.gov/
 - type: CapabilityMap
