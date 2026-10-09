@@ -7,14 +7,17 @@ front_door_ai:
   probed_at: '2026-09-17'
   host: www.treasury.gov
   final_host: home.treasury.gov
-  ownership: inherited
+  ownership: own
   owner: department-of-the-treasury
   shares_host_with: null
-  inherited_from: home.treasury.gov
+  inherited_from: null
+  alias_of: home.treasury.gov
   verdict: silent
-  score: null
+  score: 0
+  band: 1
+  band_label: silent
   host_score: 0
-  density: null
+  density: 0.0
   words: 1145
   tiers:
     agentic: 0

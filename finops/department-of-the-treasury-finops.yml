@@ -149,10 +149,8 @@ apis:
 unitEconomics:
   - name: Consumer Cost per 1K Requests
     metric: consumer_side_cost / (api_requests / 1000)
-    target: trend down via caching
   - name: Cost per Sanctions Screening
     metric: screening_compute_cost / sanctions_screenings
-    target: TBD
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
