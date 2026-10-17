@@ -37,6 +37,20 @@ paths:
                 $ref: '#/components/schemas/SearchResponse'
 components:
   schemas:
+    SearchResponse:
+      type: object
+      properties:
+        total:
+          type: integer
+        results:
+          type: array
+          items:
+            allOf:
+            - $ref: '#/components/schemas/SanctionedEntity'
+            - type: object
+              properties:
+                matchScore:
+                  type: number
     SanctionedEntity:
       type: object
       properties:
@@ -92,20 +106,6 @@ components:
           enum:
           - SDN
           - Consolidated
-    SearchResponse:
-      type: object
-      properties:
-        total:
-          type: integer
-        results:
-          type: array
-          items:
-            allOf:
-            - $ref: '#/components/schemas/SanctionedEntity'
-            - type: object
-              properties:
-                matchScore:
-                  type: number
     SearchRequest:
       type: object
       properties:

@@ -35,10 +35,10 @@ paths:
                 $ref: '#/components/schemas/DatasetResponse'
 components:
   parameters:
-    Filter:
-      name: filter
+    Sort:
+      name: sort
       in: query
-      description: Filter expression (e.g. record_date:gte:2025-01-01).
+      description: Sort field(s); prefix with '-' for descending.
       schema:
         type: string
     Fields:
@@ -47,10 +47,10 @@ components:
       description: Comma-separated list of fields to include in the response.
       schema:
         type: string
-    Sort:
-      name: sort
+    Filter:
+      name: filter
       in: query
-      description: Sort field(s); prefix with '-' for descending.
+      description: Filter expression (e.g. record_date:gte:2025-01-01).
       schema:
         type: string
   schemas:
