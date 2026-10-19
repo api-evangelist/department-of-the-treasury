@@ -1,0 +1,12 @@
+{
+ "url": "https://open.gsa.gov/api/entity-api/v1/openapi.yaml",
+ "final": "https://open.gsa.gov/api/entity-api/v1/openapi.yaml",
+ "status": 200,
+ "content_type": "binary/octet-stream",
+ "bytes": 108049,
+ "sha256": "a9a5378adac419db00ee59e3a43e1a1144a3198c3edc4f5840fdd7f3987976a4",
+ "fetched_at": "2026-10-19",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "re-archived: the provider's current document replaced a stale archive (roadmap#793); the old files are in openapi/_superseded/2026-10-19-stale"
+}

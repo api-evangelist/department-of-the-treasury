@@ -56,10 +56,16 @@ paths:
                 $ref: '#/components/schemas/DatasetResponse'
 components:
   parameters:
-    Sort:
-      name: sort
+    Fields:
+      name: fields
       in: query
-      description: Sort field(s); prefix with '-' for descending.
+      description: Comma-separated list of fields to include in the response.
+      schema:
+        type: string
+    Filter:
+      name: filter
+      in: query
+      description: Filter expression (e.g. record_date:gte:2025-01-01).
       schema:
         type: string
     PageSize:
@@ -69,6 +75,12 @@ components:
         type: integer
         default: 100
         maximum: 10000
+    Sort:
+      name: sort
+      in: query
+      description: Sort field(s); prefix with '-' for descending.
+      schema:
+        type: string
     Format:
       name: format
       in: query
@@ -79,24 +91,12 @@ components:
         - csv
         - xml
         default: json
-    Filter:
-      name: filter
-      in: query
-      description: Filter expression (e.g. record_date:gte:2025-01-01).
-      schema:
-        type: string
     PageNumber:
       name: page[number]
       in: query
       schema:
         type: integer
         default: 1
-    Fields:
-      name: fields
-      in: query
-      description: Comma-separated list of fields to include in the response.
-      schema:
-        type: string
   schemas:
     DatasetResponse:
       type: object

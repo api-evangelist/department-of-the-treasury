@@ -1,10 +1,16 @@
 {
   "provider": "department-of-the-treasury",
   "sources": [
+    "_original/department-of-the-treasury-openapi.yml",
     "_original/fiscal-data-api-openapi.yml",
     "_original/ofac-sdn-api-openapi.yml"
   ],
   "outputs": [
+    "department-of-the-treasury-entity-management-controller-api-openapi.yml",
+    "department-of-the-treasury-entity-management-controller-v-2-api-openapi.yml",
+    "department-of-the-treasury-entity-management-controller-v-3-api-openapi.yml",
+    "department-of-the-treasury-entity-management-controller-v-4-api-openapi.yml",
+    "department-of-the-treasury-entity-management-extract-controller-api-openapi.yml",
     "department-of-the-treasury-auctions-api-openapi.yml",
     "department-of-the-treasury-debt-api-openapi.yml",
     "department-of-the-treasury-exchange-rates-api-openapi.yml",
@@ -18,10 +24,11 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "department-of-the-treasury-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
     "fiscal-data-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "ofac-sdn-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "apis.yml register: written (+5 apis, 16 total)"
   ],
   "skipped": [
     "department-of-the-treasury-auctions-api-openapi.yml: previously refined output, superseded by openapi/_original/",

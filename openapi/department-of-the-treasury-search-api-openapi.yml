@@ -37,6 +37,39 @@ paths:
                 $ref: '#/components/schemas/SearchResponse'
 components:
   schemas:
+    SearchRequest:
+      type: object
+      properties:
+        source:
+          type: array
+          items:
+            type: string
+            enum:
+            - SDN
+            - NS-PLC
+            - FSE-IR
+            - FSE-SY
+            - EO13662
+            - NS-ISA
+            - 561list
+            - PLC-HRIT-EO13818
+        type:
+          type: string
+          enum:
+          - Individual
+          - Entity
+          - Aircraft
+          - Vessel
+        name:
+          type: string
+        address:
+          type: string
+        country:
+          type: string
+        minScore:
+          type: integer
+          minimum: 0
+          maximum: 100
     SearchResponse:
       type: object
       properties:
@@ -106,39 +139,6 @@ components:
           enum:
           - SDN
           - Consolidated
-    SearchRequest:
-      type: object
-      properties:
-        source:
-          type: array
-          items:
-            type: string
-            enum:
-            - SDN
-            - NS-PLC
-            - FSE-IR
-            - FSE-SY
-            - EO13662
-            - NS-ISA
-            - 561list
-            - PLC-HRIT-EO13818
-        type:
-          type: string
-          enum:
-          - Individual
-          - Entity
-          - Aircraft
-          - Vessel
-        name:
-          type: string
-        address:
-          type: string
-        country:
-          type: string
-        minScore:
-          type: integer
-          minimum: 0
-          maximum: 100
 externalDocs:
   description: OFAC Sanctions List Service
   url: https://sanctionslistservice.ofac.treas.gov/
