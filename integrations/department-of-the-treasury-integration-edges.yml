@@ -1,0 +1,60 @@
+edges:
+- partner_name: FedRAMP
+  partner: null
+  partner_match: register
+  type: contract
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://marketplace.fedramp.gov/products/AGENCYWC2
+  category: FedRAMP authorization (SaaS)
+  contract_reference:
+    register: FedRAMP Marketplace data (github.com/18F/fedramp-data data/data.json @b6c758d5c7)
+    standard: FedRAMP
+    spec_file: null
+    role: fedramp-authorized
+    registered_name: United States Department of the Treasury
+    register_id: AGENCYWC2
+    matched_domain: treasury.gov
+    matched_by: domain+name-among-holders
+    domain_source: poc-email
+    designations:
+    - Compliant
+    packages:
+    - Workplace.gov Community Cloud (WC2)
+    service_models:
+    - SaaS
+    certified_products:
+    - product: FedRAMP Moderate
+      impact_level: Moderate
+      lapsed: false
+      latest_authorization: '2020-10-31'
+    signal_note: authorized SaaS offerings only, for providers gov-cloud (18F data @4b73d9247f) had not captured;
+      certified_products = one entry per AUTHORIZED impact level, never per package. The register lists current
+      designations only, so lapsed is always false
+    detected_by: sweep-us-federal-api-programs.py
+    detected: '2026-10-21'
+  detected_by: sweep-us-federal-api-programs.py
+  first_seen: '2026-10-21'
+generated: '2026-10-21'
+method: searched
+source:
+- https://api.data.gov/
+- https://github.com/GSA/api.data.gov/blob/main/content/users.csv
+- https://login.gov/partners/
+- https://github.com/GSA-TTS/identity-site
+- https://marketplace.fedramp.gov/products/
+- https://www.gsaelibrary.gsa.gov/ElibMain/home.do
+- https://api.data.gov/docs/
+- https://partners.login.gov/
+- https://marketplace.fedramp.gov/
+checked:
+- https://api.data.gov/
+- https://api.data.gov/docs/
+- https://github.com/GSA-TTS/identity-site
+- https://github.com/GSA/api.data.gov/blob/main/content/users.csv
+- https://login.gov/partners/
+- https://marketplace.fedramp.gov/
+- https://marketplace.fedramp.gov/products/
+- https://partners.login.gov/
+- https://www.gsaelibrary.gsa.gov/ElibMain/home.do
