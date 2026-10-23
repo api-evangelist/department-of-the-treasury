@@ -917,3 +917,9 @@ paths:
         404:
           description: The resource you were trying to reach is not found
           content: {}
+x-provenance:
+  method: harvested
+  publisher: Department of the Treasury
+  source: https://open.gsa.gov/api/entity-api/v1/openapi.yaml
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
